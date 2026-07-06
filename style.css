@@ -1,0 +1,114 @@
+/* Reset & Root Variables */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+:root {
+    --bg-color: #050508;
+    --text-silver: rgba(255, 255, 255, 0.7);
+    --podcast-color-1: #00f2fe;
+    --podcast-color-2: #4facfe;
+    --band-color-1: #ff0844;
+    --band-color-2: #ffb199;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Ambient Glow */
+.ambient-glow {
+    position: absolute;
+    width: min(80vw, 600px);
+    height: min(80vw, 600px);
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
+    z-index: 1;
+    animation: floatGlow 12s infinite ease-in-out;
+}
+
+@keyframes floatGlow {
+    0%, 100% {
+        transform: translate(-5%, -5%) scale(1);
+    }
+    50% {
+        transform: translate(5%, 5%) scale(1.1);
+    }
+}
+
+/* Typography Container */
+.container {
+    position: relative;
+    z-index: 10;
+    max-width: 90%;
+    width: 900px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.question {
+    font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+    line-height: 1.5;
+    font-weight: normal;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    column-gap: 0.22em;
+    row-gap: 0.15em;
+}
+
+.phrase {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--text-silver);
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.keyword {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: default;
+}
+
+.podcast {
+    background: linear-gradient(135deg, var(--podcast-color-1), var(--podcast-color-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(0, 242, 254, 0.25));
+}
+
+.band {
+    background: linear-gradient(135deg, var(--band-color-1), var(--band-color-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(255, 8, 68, 0.25));
+}
+
+/* Micro-interaction on hover */
+.keyword:hover {
+    transform: translateY(-2px) scale(1.04);
+}
+
+.podcast:hover {
+    filter: drop-shadow(0 4px 20px rgba(0, 242, 254, 0.65));
+}
+
+.band:hover {
+    filter: drop-shadow(0 4px 20px rgba(255, 8, 68, 0.65));
+}
